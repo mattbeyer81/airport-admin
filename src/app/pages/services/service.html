@@ -1,0 +1,19 @@
+<form name="formValidation" novalidate>
+    <div class="form-group" ng-class="{'has-error': formValidation.name.$invalid && (formValidation.name.$dirty || formValidation.$submitted)}">
+        <label>Name*</label>
+        <input type="text" class="form-control" placeholder="Name" name="name" ng-model="serviceForm.name" required>
+        <span class="help-block error-block basic-block">Required</span>
+    </div>
+    <div class="form-group" ng-class="{'has-error': formValidation.airport_code.$invalid && (formValidation.airport_code.$dirty || formValidation.$submitted)}">
+        <label>Airport Code*</label>
+        <input type="text" class="form-control" placeholder="Name" name="airport_code" ng-model="serviceForm.airport_code" required>
+        <span class="help-block error-block basic-block">Required</span>
+    </div>
+    <div class="form-group">
+        <div class="btn btn-primary btn-xs" ng-click="formValidation.$valid && saveService()">Save</div>
+        <div class="btn btn-primary btn-xs" ng-click="closeServiceForm()">Close</div>
+    </div>
+    <div class="form-group">
+        * Required
+    </div>
+</form>

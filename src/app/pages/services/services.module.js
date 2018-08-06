@@ -5,20 +5,20 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.airports', [])
+  angular.module('BlurAdmin.pages.services', [])
       .config(routeConfig);
 
   /** @ngInject */
   function routeConfig($stateProvider) {
     $stateProvider
-        .state('airports', {
-          url: '/airports',
-          controller: 'AirportCtrl',
-          templateUrl: 'app/pages/airports/airports.html',
-          title: 'Airports',
+        .state('services', {
+          url: '/services',
+          controller: 'ServiceCtrl',
+          templateUrl: 'app/pages/services/services.html',
+          title: 'Airport Services',
           sidebarMeta: {
             icon: 'ion-stats-bars',
-            order: 1,
+            order: 2,
           },
         });
   }

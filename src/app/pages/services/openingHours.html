@@ -1,0 +1,17 @@
+<form name="formValidation" novalidate>
+    <div class="form-group" ng-class="{'has-error': formValidation.name.$invalid && (formValidation.name.$dirty || formValidation.$submitted)}">
+        <label>Monday Opening</label>
+        <input type="time" max="24" class="form-control" placeholder="Name" name="monday_opening_time" ng-model="openingHours.monday_opening_time" required>
+    </div>
+    <div class="form-group" ng-class="{'has-error': formValidation.name.$invalid && (formValidation.name.$dirty || formValidation.$submitted)}">
+        <label>Monday Closing</label>
+        <input type="time" max="24" class="form-control" placeholder="Name" name="monday_closing_time" ng-model="openingHours.monday_closing_time" required>
+    </div>
+    <div class="form-group">
+        <div class="btn btn-primary btn-xs" ng-click="saveOpeningHours(service)">Save</div>
+        <div class="btn btn-primary btn-xs" ng-click="closeOpeningHours()">Close</div>
+    </div>
+    <div class="form-group">
+        * Required
+    </div>
+</form>

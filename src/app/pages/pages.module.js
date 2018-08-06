@@ -10,6 +10,7 @@
 
     'BlurAdmin.pages.dashboard',
     'BlurAdmin.pages.airports',
+    'BlurAdmin.pages.services',
   ])
       .config(routeConfig);
 

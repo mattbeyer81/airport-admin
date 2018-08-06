@@ -1,35 +1,19 @@
-<form name="airportForm">
-  <div class="form-group">
-    <label>Name</label>
-    <input type="text" class="form-control" placeholder="Name" name="name" ng-model="airport.name">
-  </div>
-  <div class="form-group">
-    <label for="input02">Password</label>
-    <input type="password" class="form-control" id="input02" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="input03">Rounded Corners</label>
-    <input type="text" class="form-control form-control-rounded" id="input03" placeholder="Rounded Corners">
-  </div>
-  <div class="form-group">
-    <label for="input04">With help</label>
-    <input type="text" class="form-control" id="input04" placeholder="With help">
-    <span class="help-block sub-little-text">A block of help text that breaks onto a new line and may extend beyond one line.</span>
-  </div>
-  <div class="form-group">
-    <label for="input05">Disabled Input</label>
-    <input type="text" class="form-control" id="input05" placeholder="Disabled Input" disabled>
-  </div>
-
-  <div class="form-group">
-    <label for="textarea01">Textarea</label>
-    <textarea placeholder="Default Input" class="form-control" id="textarea01"></textarea>
-  </div>
-
-  <div class="form-group">
-    <input type="text" class="form-control input-sm" id="input2" placeholder="Small Input">
-  </div>
-  <div class="form-group">
-    <div class="btn btn-primary" ng-click="save(airportForm)">Save</div>
-  </div>
+<form name="formValidation" novalidate>
+    <div class="form-group" ng-class="{'has-error': formValidation.name.$invalid && (formValidation.name.$dirty || formValidation.$submitted)}">
+        <label>Name*</label>
+        <input type="text" class="form-control" placeholder="Name" name="name" ng-model="airportForm.name" required>
+        <span class="help-block error-block basic-block">Required</span>
+    </div>
+    <div class="form-group" ng-class="{'has-error': formValidation.code.$invalid && (formValidation.code.$dirty || formValidation.$submitted)}">
+        <label>Code*</span></label>
+        <input type="text" class="form-control" placeholder="Code" name="code" ng-model="airportForm.code" required>
+        <span class="help-block error-block basic-block">Required</span>
+    </div>
+    <div class="form-group">
+        <div class="btn btn-primary btn-xs" ng-click="formValidation.$valid && saveAirport()">Save</div>
+        <div class="btn btn-primary btn-xs" ng-click="closeAirportForm()">Close</div>
+    </div>
+    <div class="form-group">
+        * Required
+    </div>
 </form>

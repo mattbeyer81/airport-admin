@@ -1,33 +1,40 @@
 <div class="widgets">
-
-    <div class="row" ng-if="airportForm">
+    <div class="row" ng-if="editAirportForm">
         <div class="col-md-6">
             <div
-            ba-panel
-            ba-panel-title="{{ airport ? 'Edit' : 'New'}} Airport"
-            ba-panel-class="with-scroll">
-            <div ng-include="'app/pages/airports/airport.html'"></div>
+                ba-panel
+                ba-panel-title="{{ airportForm.id ? 'Edit' : 'New'}} Airport"
+                ba-panel-class="with-scroll">
+                <div ng-include="'app/pages/airports/airport.html'"></div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-lg-6 col-md-12">
-        <div ba-panel ba-panel-title="Hover Rows" ba-panel-class="with-scroll table-panel">
-            <div ng-if="airports">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="airport in airports">
-                            <td>{{ $index + 1 }}</td>
-                            <td>{{airport.name}}</td>
-                            <td>{{airport.code}}</td>
-                            <td><div class="btn btn-primary btn-xs" ng-click="editAirport(airport)">Edit</div></td
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div ba-panel ba-panel-title="Airport List" ba-panel-class="with-scroll table-panel">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="btn btn-primary btn-xs" ng-click="addAirport()">Add Airport</div>
+                    </div>
+                </div>
+                <div ng-if="airports">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="airport in airports">
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{airport.name}}</td>
+                                <td>{{airport.code}}</td>
+                                <td>
+                                    <div class="btn btn-primary btn-xs" ng-click="editAirport(airport)">Edit</div>
+                                    <div class="btn btn-warning btn-xs" ng-click="deleteAirport(airport)">Delete</div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
