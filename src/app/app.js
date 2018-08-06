@@ -1,5 +1,7 @@
 'use strict';
 
+var url = 'http://localhost';
+
 angular.module('BlurAdmin', [
   'ngAnimate',
   'ui.bootstrap',
