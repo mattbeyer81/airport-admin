@@ -10,17 +10,23 @@
         </div>
     </div>
 
+    <div class="row" ng-if="viewOpeningHours">
+        <div class="col-md-6">
+            <div
+                ba-panel
+                ba-panel-title="Opening Hours for {{serviceForm.name}}"
+                ba-panel-class="with-scroll">
+                <div ng-include="'app/pages/services/openingHours.html'"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-6 col-md-12">
-            <div ba-panel ba-panel-title="Airport Service List" ba-panel-class="with-scroll table-panel">
+            <div ba-panel ba-panel-title="Airport Service List" ba-panel-class="with-scroll">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="btn btn-primary btn-xs" ng-click="addService()">Add Airport Service</div>
-                    </div>
-                </div>
-                <div class="row" ng-if="viewOpeningHours">
-                    <div class="col-md-6">
-                        <div ng-include="'app/pages/services/openingHours.html'"></div>
                     </div>
                 </div>
                 <div ng-if="services">

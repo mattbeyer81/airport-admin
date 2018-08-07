@@ -1,17 +1,25 @@
-<form name="formValidation" novalidate>
-    <div class="form-group" ng-class="{'has-error': formValidation.name.$invalid && (formValidation.name.$dirty || formValidation.$submitted)}">
-        <label>Monday Opening</label>
-        <input type="time" max="24" class="form-control" placeholder="Name" name="monday_opening_time" ng-model="openingHours.monday_opening_time" required>
-    </div>
-    <div class="form-group" ng-class="{'has-error': formValidation.name.$invalid && (formValidation.name.$dirty || formValidation.$submitted)}">
-        <label>Monday Closing</label>
-        <input type="time" max="24" class="form-control" placeholder="Name" name="monday_closing_time" ng-model="openingHours.monday_closing_time" required>
-    </div>
-    <div class="form-group">
-        <div class="btn btn-primary btn-xs" ng-click="saveOpeningHours(service)">Save</div>
-        <div class="btn btn-primary btn-xs" ng-click="closeOpeningHours()">Close</div>
-    </div>
-    <div class="form-group">
-        * Required
-    </div>
-</form>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Day of the Week</th>
+            <th>Opening Time</th>
+            <th>Closing Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="openingHour in serviceForm.opening_hours">
+            <td>{{ daysOfTheWeek[openingHour.day_of_week] }}</td>
+            <td>
+                <input type="time" class="form-control" ng-model="openingHour.opening_time" required>
+            </td>
+            <td>
+                <input type="time" class="form-control" ng-model="openingHour.closing_time" required>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="form-group col-md-12">
+    <div class="btn btn-primary btn-xs" ng-click="saveOpeningHours()">Save</div>
+    <div class="btn btn-primary btn-xs" ng-click="closeOpeningHours()">Close</div>
+</div>
