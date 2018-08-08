@@ -17,7 +17,7 @@
           templateUrl: 'app/pages/services/services.html',
           title: 'Airport Services',
           sidebarMeta: {
-            icon: 'ion-stats-bars',
+            icon: 'ion-compose',
             order: 2,
           },
         });

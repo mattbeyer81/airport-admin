@@ -24,7 +24,7 @@
               return $http.post(url + '/api/services/' + serviceId + '/opening-hours', openingHours);
           },
           search : function(params){
-              return $http.get(url + 'api/services/search', params);
+              return $http({ method: 'get', url : url + '/api/services/search', params : params});
           }
       }
 

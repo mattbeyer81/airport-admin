@@ -17,7 +17,7 @@
           templateUrl: 'app/pages/airports/airports.html',
           title: 'Airports',
           sidebarMeta: {
-            icon: 'ion-stats-bars',
+            icon: 'ion-plane',
             order: 1,
           },
         });
