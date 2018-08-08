@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label >Aiport</label>
+                <select class="form-control" ng-model="searchParams.airportId" ng-options="item.id as item.name for item in airports track by item.id">
+                </select>
+            </div>
+        </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label >Day of Week</label>
+            <select class="form-control" ng-model="searchParams.day_of_week" ng-options="key as value for (key, value) in daysOfWeek">
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label >From</label>
+            <div uib-timepicker ng-model="searchParams.from"></div>
+
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label >To</label>
+            <div uib-timepicker ng-model="searchParams.to"></div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="btn btn-primary btn-xs" ng-click="search()">Search</div>
+    </div>
+</div>

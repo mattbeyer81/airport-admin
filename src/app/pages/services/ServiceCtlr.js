@@ -5,15 +5,37 @@
     .controller('ServiceCtrl', ServiceCtrl);
 
     /** @ngInject */
-    function ServiceCtrl($scope, airportServiceService, toastr) {
+    function ServiceCtrl($scope, airportServiceService, toastr, airportService) {
 
         $scope.serviceForm = {};
         $scope.editServiceForm = false;;
         $scope.mytime = new Date();
 
-        $scope.daysOfTheWeek = [
-            'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
-        ]
+        $scope.daysOfWeek = {
+            "0": 'Sunday', "1": 'Monday', "2": "Tuesday", "3": "Wednesday", 4: "Thursday", "5": "Friday", "6": "Saturday"
+        }
+
+        $scope.searchParams = {
+            day_of_week : "0",
+            from : new Date,
+            to : new Date
+        };
+
+
+        $scope.getAirports = function(){
+            airportService.getAirports().success(function(res){
+                $scope.airports = res;
+            });
+        }
+
+        $scope.getAirports();
+
+        $scope.search = function(){
+            console.log($scope.searchParams);
+            airportServiceService.search($scope.searchParams).success(function(res){
+                console.log(res);
+            });
+        }
 
         $scope.getServices = function(){
             airportServiceService.getServices().success(function(res){
@@ -38,8 +60,7 @@
 
             airportServiceService.saveOpeningHours($scope.serviceForm.id, $scope.serviceForm.opening_hours).success(function(){
                 toastr.success('Service sucessfully saved');
-                $scope.serviceForm = {};
-                $scope.editForm = false;
+                $scope.closeOpeningHours();
                 $scope.getServices();
             }).error(function(){
                 toastr.error('There was an error trying to save');
@@ -100,23 +121,13 @@
 
         }
 
-        // $scope.saveOpeningHours = function(){
-        //     var openingHours = [
-        //         {
-        //             'day_of_week' : 'Monday',
-        //             'opening_time' : $scope.openingHours.monday_opening_time,
-        //             'closing_time' : $scope.openingHours.monday_closing_time
-        //         }
-        //     ];
-        //     airportServiceService.saveOpeningHours($scope.service.id, openingHours).success(function(){
-        //         toastr.success('Service sucessfully created');
-        //         $scope.serviceForm = {};
-        //         $scope.editForm = false;
-        //         $scope.getServices();
-        //     }).error(function(){
-        //         toastr.error('There was an error trying to create service');
-        //     });
-        // }
+        $scope.closeOpeningHours = function(){
+            $scope.serviceForm = {};
+            $scope.editServiceForm = false;
+            $scope.viewOpeningHours = false;
+            $scope.openingHours = {};
+        }
+
 
 
     }

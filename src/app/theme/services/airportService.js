@@ -22,6 +22,9 @@
           },
           saveOpeningHours : function(serviceId, openingHours){
               return $http.post(url + '/api/services/' + serviceId + '/opening-hours', openingHours);
+          },
+          search : function(params){
+              return $http.get(url + 'api/services/search', params);
           }
       }
 
