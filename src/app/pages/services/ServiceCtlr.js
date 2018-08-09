@@ -14,6 +14,9 @@
             "0": 'Sunday', "1": 'Monday', "2": "Tuesday", "3": "Wednesday", 4: "Thursday", "5": "Friday", "6": "Saturday"
         }
 
+        /**
+         * Get a list of airports
+         */
         $scope.getAirports = function(){
             airportService.getAirports().success(function(res){
                 $scope.airports = res;
@@ -23,18 +26,21 @@
 
         $scope.getAirports();
 
+
+        /**
+         * Set the default search params
+         */
         $scope.setSearchParams = function(){
             $scope.searchParams = {
-                airport_id: 1,
                 day_of_week : "0",
                 from : new Date('1970-01-01T00:00:00Z'),
                 to : new Date('1970-01-01T00:00:00Z')
             };
         }
 
-
-
-
+        /**
+         * Create data objects for each of the services opening hours
+         */
         $scope.formatOpeningHourDates = function(){
             angular.forEach($scope.services, function(service){
                 angular.forEach(service.opening_hours, function(openingHour){
@@ -44,6 +50,9 @@
             })
         }
 
+        /**
+         * Get list of airport services using search parameters
+         */
         $scope.search = function(){
             airportServiceService.search($scope.searchParams).success(function(res){
                 $scope.services = res.results;
@@ -52,6 +61,9 @@
             });
         }
 
+        /**
+         * Get list of airport services
+         */
         $scope.getServices = function(){
             airportServiceService.getServices().success(function(res){
                 $scope.services = res.results;
@@ -60,6 +72,9 @@
         }
         $scope.getServices();
 
+        /**
+         * View edit service form
+         */
         $scope.editService = function(service){
             $scope.editForm = true;
             angular.copy(service, $scope.serviceForm);
@@ -67,8 +82,10 @@
         }
 
 
+        /**
+        * Make request to save opening hours
+         */
         $scope.saveOpeningHours = function(){
-
             airportServiceService.saveOpeningHours($scope.serviceForm.id, $scope.serviceForm.opening_hours).success(function(){
                 toastr.success('Service sucessfully saved');
                 $scope.closeOpeningHours();
@@ -79,7 +96,9 @@
 
         }
 
-
+        /**
+        * Make request to save service
+         */
         $scope.saveService = function(){
             if ($scope.serviceForm.id) {
                 airportServiceService.saveService($scope.serviceForm).success(function(){
@@ -102,6 +121,9 @@
             }
         }
 
+        /**
+        * Make request to delete service
+         */
         $scope.deleteService = function(airport){
             airportServiceService.deleteService(airport.id).success(function(){
                 toastr.success('Service sucessfully created');
@@ -113,7 +135,9 @@
             });
         }
 
-
+        /**
+        * View add service form
+         */
         $scope.addService = function(){
             $scope.editForm = true;
         }
@@ -123,6 +147,9 @@
             $scope.editForm = false;
         }
 
+        /**
+        * View edit service form
+         */
         $scope.editOpeningHours = function(service){
             $scope.serviceForm = {};
             $scope.editServiceForm = false;
@@ -132,14 +159,15 @@
 
         }
 
+        /**
+        * Close opening hours form
+         */
         $scope.closeOpeningHours = function(){
             $scope.serviceForm = {};
             $scope.editServiceForm = false;
             $scope.viewOpeningHours = false;
             $scope.openingHours = {};
         }
-
-
 
     }
 
