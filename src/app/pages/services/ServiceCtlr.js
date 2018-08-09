@@ -19,7 +19,7 @@
          */
         $scope.getAirports = function(){
             airportService.getAirports().success(function(res){
-                $scope.airports = res;
+                $scope.airports = res.results;
                 $scope.setSearchParams();
             });
         }
