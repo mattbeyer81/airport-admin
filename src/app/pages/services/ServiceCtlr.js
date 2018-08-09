@@ -56,6 +56,7 @@
         $scope.search = function(){
             airportServiceService.search($scope.searchParams).success(function(res){
                 $scope.services = res.results;
+                $scope.closeOpeningHours();
                 $scope.formatOpeningHourDates();
 
             });

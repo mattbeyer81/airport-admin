@@ -12,7 +12,7 @@
               return $http.get(url + '/api/services');
           },
           saveService : function(service){
-              return $http.put(url + '/api/services', service);
+              return $http.put(url + '/api/services/' + service.id, service);
           },
           createService : function(service){
               return $http.post(url + '/api/services', service);
