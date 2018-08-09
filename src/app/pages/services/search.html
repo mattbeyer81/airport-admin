@@ -1,32 +1,36 @@
 <div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-            <label >Aiport</label>
-            <select class="form-control" ng-model="searchParams.airport_id" ng-options="item.id as item.name for item in airports track by item.id">
-            </select>
+    <form name="form.searchFormValidation" novalidate>
+        <div class="col-md-12">
+            <div class="form-group" ng-class="{'has-error': form.searchFormValidation.airport.$invalid && (form.searchFormValidation.airport.$dirty || form.searchFormValidation.$submitted)}">
+                <label >Airport</label>
+                <select class="form-control" ng-model="searchParams.airport_id" name="airport" ng-options="item.id as item.name for item in airports track by item.id" required>
+                </select>
+                <span class="help-block error-block basic-block">Required</span>
+            </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label >Day of Week</label>
-            <select class="form-control" ng-model="searchParams.day_of_week" ng-options="key as value for (key, value) in daysOfWeek">
-            </select>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label >Day of Week</label>
+                <select class="form-control" ng-model="searchParams.day_of_week" ng-options="key as value for (key, value) in daysOfWeek">
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="col-xs-6">
-        <div class="form-group">
-            <label >From</label>
-            <div uib-timepicker ng-model="searchParams.from"></div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label >From</label>
+                <div uib-timepicker ng-model="searchParams.from"></div>
 
+            </div>
         </div>
-    </div>
-    <div class="col-xs-6">
-        <div class="form-group">
-            <label >To</label>
-            <div uib-timepicker ng-model="searchParams.to"></div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label >To</label>
+                <div uib-timepicker ng-model="searchParams.to"></div>
+            </div>
         </div>
-    </div>
-    <div class="col-md-6">
-        <div class="btn btn-primary btn-xs" ng-click="search()">Search</div>
-    </div>
+        <div class="col-md-6">
+            <button class="btn btn-primary btn-xs" ng-click="form.searchFormValidation.$valid && search()">Search</button>
+            <button class="btn btn-primary btn-xs" ng-click="clearSearch()">Clear</button>
+        </div>
+    </form>
 </div>

@@ -8,7 +8,8 @@
     function ServiceCtrl($scope, airportServiceService, toastr, airportService) {
 
         $scope.serviceForm = {};
-        $scope.editServiceForm = false;;
+        $scope.editServiceForm = false;
+        $scope.form = {};
 
         $scope.daysOfWeek = {
             "0": 'Sunday', "1": 'Monday', "2": "Tuesday", "3": "Wednesday", 4: "Thursday", "5": "Friday", "6": "Saturday"
@@ -60,6 +61,13 @@
                 $scope.formatOpeningHourDates();
 
             });
+        }
+
+
+        $scope.clearSearch = function(){
+            $scope.form.searchFormValidation.$setPristine();
+            $scope.setSearchParams();
+            $scope.getServices();
         }
 
         /**
@@ -146,6 +154,7 @@
         $scope.closeServiceForm = function(){
             $scope.serviceForm = {};
             $scope.editForm = false;
+            $scope.getServices();
         }
 
         /**
