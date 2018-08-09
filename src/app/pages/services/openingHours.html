@@ -10,7 +10,7 @@
     </thead>
     <tbody>
         <tr ng-repeat="openingHour in serviceForm.opening_hours">
-            <td>{{ daysOfTheWeek[openingHour.day_of_week] }}</td>
+            <td>{{ daysOfWeek[openingHour.day_of_week] }}</td>
             <td>
                 <div uib-timepicker ng-model="openingHour.opening_time"></div>
             </td>

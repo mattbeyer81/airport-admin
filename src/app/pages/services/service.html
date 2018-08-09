@@ -9,10 +9,9 @@
         <input type="text" class="form-control" placeholder="Name" name="airport_code" ng-model="serviceForm.airport_code" required>
         <span class="help-block error-block basic-block">Required</span>
     </div>
-    <div class="form-group" ng-class="{'has-error': formValidation.airport_code.$invalid && (formValidation.airport_code.$dirty || formValidation.$submitted)}">
-        <label>Company Number</label>
-        <input type="text" class="form-control" placeholder="Name" name="company_number" ng-model="serviceForm.company_number" required>
-        <span class="help-block error-block basic-block">Required</span>
+    <div class="form-group">
+        <label>Companies House Company Number</label>
+        <input type="text" class="form-control" placeholder="Company Number" name="company_number" ng-model="serviceForm.company_number">
     </div>
     <div class="form-group">
         <div class="btn btn-primary btn-xs" ng-click="formValidation.$valid && saveService()">Save</div>
