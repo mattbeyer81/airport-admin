@@ -63,7 +63,8 @@
 
         $scope.editService = function(service){
             $scope.editForm = true;
-            angular.copy(airport, $scope.serviceForm);
+            angular.copy(service, $scope.serviceForm);
+            $scope.serviceForm.airport_code = service.airport.code;
         }
 
 

@@ -33,7 +33,7 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-6 col-md-12">
+        <div class="col-lg-12 col-md-12">
             <div ba-panel ba-panel-title="Airport Service List" ba-panel-class="with-scroll">
                 <div class="row">
                     <div class="col-md-6">
@@ -48,6 +48,8 @@
                                 <th>Name</th>
                                 <th>Airport Name</th>
                                 <th>Airport Code</th>
+                                <th>Company Name</th>
+                                <th>Company Number</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,6 +58,8 @@
                                 <td>{{service.name}}</td>
                                 <td>{{service.airport.name}}</td>
                                 <td>{{service.airport.code}}</td>
+                                <td>{{service.data.name ? service.data.name : 'N/A'}}</td>
+                                <td>{{service.data.company_number ? service.data.company_number : 'N/A'}}</td>
                                 <td>
                                     <div class="btn btn-primary btn-xs" ng-click="editService(service)">Edit</div>
                                     <div class="btn btn-info btn-xs" ng-click="editOpeningHours(service)">Opening Hours</div>
